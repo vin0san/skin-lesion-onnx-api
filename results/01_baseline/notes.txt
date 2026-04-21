@@ -1,0 +1,47 @@
+Experiment Name: 01_baseline
+
+Goal:
+Establish baseline performance with pretrained EfficientNet-B0 without augmentation
+
+Expectation:
+Model will overfit due to small dataset and lack of augmentation.
+Minority classes will have lower recall due to imbalance.
+
+Model Selection Metric:
+Macro F1-score
+
+WHY:
+Ensures balanced performance across all classes and prevents bias toward majority classes in an imbalanced medical dataset.
+
+Training Setup:
+
+- Loss: CrossEntropyLoss
+- Optimizer: AdamW (lr=1e-4)
+- Metric: Macro F1 (model selection)
+- Additional metric: Balanced Accuracy
+
+Final Observation (Baseline):
+
+- Training loss decreased consistently (2.28 → ~0.12)
+- Validation loss increased steadily after early epochs, indicating overfitting
+- Macro F1 improved and peaked at epoch 17 (0.4595)
+
+Insights:
+
+- Overfitting began early (around epoch 4–5), but did not immediately degrade performance
+- Model continued to extract useful features even after initial overfitting phase
+- Performance remained unstable due to small dataset size and class imbalance
+- Validation loss was not aligned with model performance (F1 continued improving)
+
+Visualization Insights:
+
+- Training loss decreased steadily
+- Validation loss increased after early epochs → overfitting
+- F1 peaked at epoch 17 and fluctuated afterward
+- Training was unstable due to small dataset and imbalance
+
+Conclusion:
+
+- Best model occurs at epoch 17 (not final epoch)
+- Early stopping based on validation loss alone would have missed optimal performance
+- Strong need for regularization (augmentation) to stabilize training and improve generalization

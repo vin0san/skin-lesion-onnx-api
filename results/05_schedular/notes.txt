@@ -1,0 +1,39 @@
+Experiment: 05_scheduler_resolution
+
+Changes:
+
+- Increased input resolution (224 → 300)
+- Added ReduceLROnPlateau scheduler
+- Kept augmentation and class weighting
+
+Hypothesis:
+
+- Higher resolution improves feature extraction (lesion details)
+- Scheduler improves convergence and stability
+- Potential improvement in Macro F1 beyond previous best (~0.53)
+
+Final Observation (Scheduler + Resolution):
+
+- Training loss decreased steadily with smoother convergence
+- Validation loss remained lower compared to previous experiments (~1.5–1.9)
+- Macro F1 improved significantly and peaked at 0.5857 (epoch 12)
+
+Insights:
+
+- ReduceLROnPlateau scheduler enabled finer optimization by reducing learning rate after plateau
+- Higher input resolution improved feature extraction, especially lesion boundary details
+- Training became more stable with fewer fluctuations
+- Model benefited from longer training compared to previous experiments
+
+Comparison with Previous Experiments:
+
+- Baseline F1 ≈ 0.46
+- Augmentation F1 ≈ 0.51
+- Aug + Weights F1 ≈ 0.53
+- Final Model F1 ≈ 0.586 (best)
+
+Conclusion:
+
+- Combining augmentation, class weighting, scheduler, and higher resolution yields best performance
+- Scheduler is critical for extracting final performance gains
+- Higher resolution is beneficial for medical imaging tasks

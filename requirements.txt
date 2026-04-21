@@ -1,0 +1,14 @@
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+
+fastapi
+uvicorn
+onnxruntime
+opencv-python-headless
+python-multipart
+
+streamlit
+requests

@@ -1,0 +1,36 @@
+Experiment: 02_augmentation
+
+Goal:
+
+Evaluate impact of data augmentation on generalization
+
+Expected:
+
+- higher validation F1
+- reduced overfitting
+- more stable training curves
+
+Change:
+
+- Added data augmentation:
+  - Horizontal flip
+  - Vertical flip
+  - Random rotation (±30°)
+  - Color jitter (brightness, contrast, saturation)
+
+Hypothesis:
+
+- Improved generalization
+- Reduced overfitting
+- Higher validation F1 compared to baseline (~0.46)
+
+Training Strategy:
+
+- Training was stopped early after observing no improvement beyond epoch 4–10
+- Model reached peak performance quickly due to augmentation
+- Further training led to instability and overfitting
+
+Insight:
+
+- Augmentation improves data efficiency (faster convergence)
+- Optimal training duration is significantly reduced compared to baseline

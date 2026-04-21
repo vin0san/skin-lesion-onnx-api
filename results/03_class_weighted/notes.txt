@@ -1,0 +1,31 @@
+Experiment: 03_class_weighted
+
+Change:
+
+- Applied class-weighted CrossEntropyLoss
+- No augmentation used
+
+Hypothesis:
+
+- Improve minority class performance
+- Slight increase in Macro F1
+- Possible instability in training
+
+Final Observation (Class Weighting):
+
+- Training loss decreased steadily
+- Validation loss increased, indicating overfitting
+- Macro F1 peaked at 0.4452 (epoch 13), slightly below baseline (~0.46)
+
+Insights:
+
+- Class weighting did not improve overall F1 performance
+- Training became more unstable with noticeable fluctuations
+- Class weighting likely improved minority class performance at the expense of majority classes
+- Overall performance distribution changed rather than improving uniformly
+
+Conclusion:
+
+- Class weighting alone is not sufficient to improve generalization
+- It should be combined with augmentation for best results
+- Evaluation using only F1 is insufficient; class-wise metrics are needed

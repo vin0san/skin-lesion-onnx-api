@@ -1,0 +1,127 @@
+Experiment: 06_final_model (EfficientNet-B3 + Label Smoothing + Scheduler + Early Stopping)
+
+
+Goal:
+
+Build the final optimized model by combining:
+
+- stronger backbone (EfficientNet-B3)
+- data augmentation
+- class imbalance handling
+- training optimization techniques
+
+Changes from Previous Best (Exp 05)
+
+- Backbone upgraded: EfficientNet-B0 → EfficientNet-B3
+- Added label smoothing (0.1) in CrossEntropyLoss
+- Introduced early stopping (patience = 7)
+- Used ReduceLROnPlateau scheduler
+- Reduced batch size (32 → 16) to support higher resolution and larger model
+- Maintained augmentation + class weighting
+
+Final Configuration
+
+- Model: EfficientNet-B3 (pretrained)
+- Input Resolution: 300 × 300
+- Loss: Weighted CrossEntropy + Label Smoothing (0.1)
+- Optimizer: AdamW (lr = 1e-4)
+- Scheduler: ReduceLROnPlateau (factor = 0.1, patience = 3)
+- Batch Size: 16
+- Early Stopping: patience = 7
+
+Results
+
+- Best Macro F1: 0.5903
+- Best Epoch: 8
+- Early Stopping Triggered: Epoch 15
+
+Training Behavior
+
+* Rapid improvement in early epochs (1–8)
+* Peak performance reached early (epoch 8)
+* Gradual instability and overfitting after peak
+* Early stopping successfully prevented further degradation
+* Learning rate remained constant (scheduler did not trigger)
+
+Key Insights
+
+1. Model Capacity Matters (to a limit)
+
+   * EfficientNet-B3 provided marginal improvement over B0
+   * Gains were small, indicating nearing dataset performance ceiling
+
+2. Label Smoothing Improved Stability
+
+   * Reduced overconfidence
+   * Smoother training and validation behavior
+
+3. Early Stopping Was Crucial
+
+   * Prevented over-training beyond optimal epoch
+   * Helped retain best generalization performance
+
+4. Scheduler Had Limited Impact
+
+   * Validation loss fluctuations prevented LR reduction
+   * Indicates need for alternative scheduling (e.g., cosine annealing)
+
+5. Diminishing Returns Observed
+
+   * Improvement over previous best (~0.5857 → 0.5903) was minimal
+   * Suggests model is approaching maximum achievable performance on dataset
+
+---
+
+### Comparison with Previous Experiments
+
+* Baseline (EffNet-B0): ~0.46
+* Augmentation: ~0.51
+* Aug + Class Weights: ~0.53
+* Scheduler + Resolution: ~0.586
+* Final (B3 + smoothing + early stop): ~0.590
+
+---
+
+### Conclusion
+
+- Final model achieves the best performance across all experiments
+- Improvements from architectural scaling are incremental
+- Most significant gains came from:
+
+  - augmentation (generalization)
+  - class weighting (imbalance handling)
+  - training optimization (scheduler + early stopping)
+
+Limitations
+
+- Dataset is small and imbalanced → limits generalization
+- Model shows overfitting beyond early epochs
+- Scheduler did not activate → suboptimal fine-tuning
+- Performance gains are now marginal (approaching ceiling)
+
+Final Takeaway
+
+A combination of:
+
+* data augmentation
+* class imbalance handling
+* controlled optimization
+* and moderate model scaling
+
+leads to the most robust performance.
+
+Further improvements are likely to come from:
+
+- better data
+- more advanced architectures
+- or inference-time optimizations
+
+Next Steps
+
+* Deploy model via FastAPI
+* Export to ONNX for optimized inference
+* Benchmark latency (PyTorch vs ONNX)
+
+---
+
+END OF EXPERIMENT

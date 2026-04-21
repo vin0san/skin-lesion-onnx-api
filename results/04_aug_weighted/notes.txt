@@ -1,0 +1,40 @@
+Experiment: 04_aug_weighted
+
+Change:
+
+- Added data augmentation
+- Applied class-weighted CrossEntropyLoss
+
+Hypothesis:
+
+- Best overall performance
+- Improved generalization
+- Better minority class recall
+- Higher Macro F1 than previous experiments (>0.51)
+
+Final Observation (Augmentation + Class Weights):
+
+- Training loss decreased steadily with controlled convergence
+- Validation loss remained significantly lower (~1.58–1.7) compared to previous experiments
+- Macro F1 improved and peaked at 0.5335 (epoch 6)
+
+Insights:
+
+- Data augmentation improved generalization and reduced overfitting
+- Class weighting improved attention to minority classes
+- Combining both techniques resulted in complementary benefits
+- Training became more stable compared to class weighting alone
+- Model achieved better performance earlier in training
+
+Comparison with Previous Experiments:
+
+- Baseline F1 ≈ 0.46
+- Augmentation F1 ≈ 0.51
+- Class Weights F1 ≈ 0.45
+- Combined F1 ≈ 0.53 (best)
+
+Conclusion:
+
+- Best performance achieved using both augmentation and class weighting
+- Augmentation handles data scarcity; class weights address imbalance
+- Combined approach provides the most robust and generalizable model
