@@ -1,0 +1,21 @@
+{
+  "best_f1": 0.6587315976345497,
+  "model_path": "/kaggle/working/best_model.pth",
+  "onnx_path": "/kaggle/working/skin_classifier_v1.onnx",
+  "benchmark": {
+    "pytorch_ms": 14.757531079999353,
+    "onnx_ms": 43.243922380002005,
+    "speedup": 0.34126254668387623
+  },
+  "classes": [
+    "actinic keratosis",
+    "basal cell carcinoma",
+    "dermatofibroma",
+    "melanoma",
+    "nevus",
+    "pigmented benign keratosis",
+    "seborrheic keratosis",
+    "squamous cell carcinoma",
+    "vascular lesion"
+  ]
+}

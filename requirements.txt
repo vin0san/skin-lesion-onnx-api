@@ -12,3 +12,10 @@ python-multipart
 
 streamlit
 requests
+pytest
+pytest-asyncio
+pytest-cov
+black
+flake8
+isort
+mypy
