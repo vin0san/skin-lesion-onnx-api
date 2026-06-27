@@ -1,4 +1,5 @@
 # Skin Lesion Classification — EfficientNet-B3 ONNX API
+**[Live Demo](https://vin0san-skin-lesion-classifier.hf.space)** | **[Blog Post](https://mlbuild.hashnode.dev)**
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/pytorch-2.0+-red.svg)](https://pytorch.org/)
